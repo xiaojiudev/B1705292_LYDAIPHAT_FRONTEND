@@ -65,3 +65,12 @@ export default {
 ```
 
 
+```sh
+...
+    {
+        path: "/contacts",
+        name: "contact.add",
+        component: () => import("@/views/ContactAdd.vue"),
+    },
+...  
+```
