@@ -73,6 +73,8 @@ export default {
             contactLocal: this.contact,
             contactFormSchema,
         }
+
+        
     },
     methods: {
         submitContact() {

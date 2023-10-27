@@ -50,7 +50,7 @@ export default {
             }
         },
 
-        async deleteContact(data) {
+        async deleteContact() {
             if (confirm("Bạn muốn xóa Liên hệ này?")) {
                 try {
                     await ContactService.delete(this.contact._id);
@@ -62,8 +62,10 @@ export default {
         }
     },
     created() {
-        this.getContact(this.id);
-        this.message = "";
+        console.log('component created');
+
+        this.getContact(this.id); // get contact then biding into screen
+        this.message = ""; // Initialize the success message
     },
 
 }
