@@ -8,6 +8,8 @@ Bài tập thực hành CT449, HK1 2023-2024
 
 **Nhóm học phần**: CT484-04
 
+
+### src/views/ContactAdd.vue
 ```sh
 <template>
     <div class="page">
@@ -16,6 +18,7 @@ Bài tập thực hành CT449, HK1 2023-2024
         <p>{{ message }}</p>
     </div>
 </template>
+
 <script>
 import ContactForm from "@/components/ContactForm.vue";
 import ContactService from "@/services/contact.service";
@@ -36,10 +39,6 @@ export default {
             message: "",
         };
     },
-```
-
-```sh
-...
     methods: {
         async createContact(data) {
             try {
@@ -60,11 +59,12 @@ export default {
     created() {
         this.message = "";
     },
+
 }
 </script>
 ```
 
-
+### src/route/index.js
 ```sh
 ...
     {
