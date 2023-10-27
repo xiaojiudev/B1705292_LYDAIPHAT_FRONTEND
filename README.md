@@ -60,7 +60,6 @@ export default {
     created() {
         this.message = "";
     },
-
 }
 </script>
 ```
