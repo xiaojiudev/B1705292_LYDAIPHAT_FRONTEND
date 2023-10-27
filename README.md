@@ -1,29 +1,68 @@
 # contactbook-frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Bài tập thực hành CT449, HK1 2023-2024
 
-## Recommended IDE Setup
+**MSSV**: B1705292
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+**Họ tên SV**: Lý Đại Phát
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+**Nhóm học phần**: CT484-04
 
 ```sh
-npm install
-```
+<template>
+    <div class="page">
+        <h4>Tạo Mới Liên hệ</h4>
+        <ContactForm @submit:contact="createContact" :contact="contact" />
+        <p>{{ message }}</p>
+    </div>
+</template>
+<script>
+import ContactForm from "@/components/ContactForm.vue";
+import ContactService from "@/services/contact.service";
 
-### Compile and Hot-Reload for Development
+export default {
+    components: {
+        ContactForm,
+    },
+    data() {
+        return {
+            contact: {
+                name: "",
+                email: "",
+                address: "",
+                phone: "",
+                favorite: false
+            },
+            message: "",
+        };
+    },
+```
 
 ```sh
-npm run dev
+...
+    methods: {
+        async createContact(data) {
+            try {
+                await ContactService.create(data);
+
+                this.message = "Liên hệ được tạo mới thành công.";
+
+                // Chuyển sang trang chủ để hiển thị tất cả liên hệ
+                setTimeout(() => {
+                    this.$router.push({ name: "contactbook" });
+                }, 2000);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+    }
+    ,
+    created() {
+        this.message = "";
+    },
+
+}
+</script>
 ```
 
-### Compile and Minify for Production
 
-```sh
-npm run build
-```
